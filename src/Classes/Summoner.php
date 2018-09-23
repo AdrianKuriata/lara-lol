@@ -13,6 +13,11 @@ class Summoner {
         $this->type = 'summoner';
     }
 
+    public function all()
+    {
+        return $this->response();
+    }
+
     public function get($field)
     {
         return $this->response()->{$field};

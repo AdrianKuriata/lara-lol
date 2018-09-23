@@ -13,7 +13,7 @@ class Champion {
         $this->name = 'champion-rotations';
     }
 
-    public function get()
+    public function all()
     {
         return $this->response();
     }
