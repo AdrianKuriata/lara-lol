@@ -15,7 +15,7 @@ class LaralolServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/laralol.php' => config_path('laralol.php'),
-        ]);
+        ], 'laralol-config');
     }
 
     /**
