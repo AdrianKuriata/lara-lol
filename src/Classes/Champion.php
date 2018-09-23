@@ -4,32 +4,18 @@ namespace Devtemple\Laralol\Classes;
 
 use Devtemple\Laralol\Traits\Connector;
 
-class Champion {
+/**
+ * Champion enpoint
+ */
+class Champion extends Base {
     use Connector;
 
+    /**
+     * Construct where we defining type and name endpoint
+     */
     public function __construct()
     {
         $this->type = 'platform';
         $this->name = 'champion-rotations';
-    }
-
-    public function all()
-    {
-        return $this->response();
-    }
-
-    public function freeChampionIds()
-    {
-        return $this->response()->freeChampionIds;
-    }
-
-    public function freeChampionIdsForNewPlayers()
-    {
-        return $this->response()->freeChampionIdsForNewPlayers;
-    }
-
-    public function maxNewPlayerLevel()
-    {
-        return $this->response()->maxNewPlayerLevel;
     }
 }
