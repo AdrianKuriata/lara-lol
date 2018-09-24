@@ -116,10 +116,29 @@ LolStatus::get('hostname'); or LolStatus::get(['hostname', 'locales', 'slug']);
 In progress ...
 
 #### SPECTATOR
-In progress ...
+This is Spectator endpoint. With this you can receive featured games or information if user is IN-GAME and receive information about this game.
 
-#### SPECTATOR
-In progress ...
+You can do this with two functions:
+```
+featuredGames();
+```
+which let you receive popular games and
+
+```
+findById($id);
+```
+which let you get information if user is in game.
+
+ex.
+```
+use Devtemple\Laralol\Facades\Spectator;
+
+Spectator::featuredGames()->all(); or Spectator::featuredGames()->get('gameMode'); or Spectator::featuredGames(['gameMode', 'gameId']);
+
+or
+
+Spectator::findById($id)->all(); or Spectator::findById($id)->get('gameId'); or Spectator::findById($id)->get(['gameId', 'gameMode']);
+```
 
 #### SPECTATOR
 In progress ...
