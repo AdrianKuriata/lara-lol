@@ -140,9 +140,6 @@ or
 Spectator::findById($id)->all(); or Spectator::findById($id)->get('gameId'); or Spectator::findById($id)->get(['gameId', 'gameMode']);
 ```
 
-#### SPECTATOR
-In progress ...
-
 #### THIRD PARTY CODE
 In progress ...
 
