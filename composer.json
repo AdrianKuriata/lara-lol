@@ -26,7 +26,8 @@
             ],
             "aliases": {
                 "Champion": "Devtemple\\Laralol\\Facades\\Champion",
-                "Summoner": "Devtemple\\Laralol\\Facades\\Summoner"
+                "Summoner": "Devtemple\\Laralol\\Facades\\Summoner",
+                "LolStatus": "Devtemple\\Laralol\\Facades\\LolStatus",
             }
         }
     }
