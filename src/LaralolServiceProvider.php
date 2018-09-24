@@ -16,7 +16,8 @@ class LaralolServiceProvider extends ServiceProvider
     protected $facades = [
         'champion' => '\Devtemple\Laralol\Classes\Champion',
         'summoner' => '\Devtemple\Laralol\Classes\Summoner',
-        'lol-status' => '\Devtemple\Laralol\Classes\LolStatus'
+        'lol-status' => '\Devtemple\Laralol\Classes\LolStatus',
+        'spectator' => '\Devtemple\Laralol\Classes\Spectator'
     ];
 
     /**
