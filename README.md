@@ -37,7 +37,7 @@ Champion::server('euw1')->all();
 ### How use
 
 #### Champion
-This is a champion endpoint. You can with it get a three possible elements which specific functions:
+This is a champion endpoint. You can with it get a three possible elements which specific functions.
 
 This is possible with function
 ```
@@ -60,7 +60,7 @@ Champion::get('freeChampionIds') or Champion::get(['freeChampionIds', 'maxNewPla
 ```
 
 #### Summoner
-This is Summoner endpoint where we can get summoner information with some additional functions:
+This is Summoner endpoint where we can get summoner information with some additional functions.
 
 We can get information about summoner with his name
 ```
@@ -99,7 +99,18 @@ In progress ...
 In progress ...
 
 #### LOL STATUS
-In progress ...
+This is LolStatus endpoint. With it you can get some information about server.
+
+ex.
+```
+use Devtemple\Laralol\Facades\LolStatus;
+
+LolStatus::all();
+
+or
+
+LolStatus::get('hostname'); or LolStatus::get(['hostname', 'locales', 'slug']);
+```
 
 #### MATCH
 In progress ...
