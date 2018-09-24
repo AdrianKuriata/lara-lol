@@ -17,7 +17,8 @@ class LaralolServiceProvider extends ServiceProvider
         'champion' => '\Devtemple\Laralol\Classes\Champion',
         'summoner' => '\Devtemple\Laralol\Classes\Summoner',
         'lol-status' => '\Devtemple\Laralol\Classes\LolStatus',
-        'spectator' => '\Devtemple\Laralol\Classes\Spectator'
+        'spectator' => '\Devtemple\Laralol\Classes\Spectator',
+        'champion-mastery' => '\Devtemple\Laralol\Classes\ChampionMastery'
     ];
 
     /**
