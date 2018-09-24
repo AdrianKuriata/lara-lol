@@ -28,7 +28,8 @@
                 "Champion": "Devtemple\\Laralol\\Facades\\Champion",
                 "Summoner": "Devtemple\\Laralol\\Facades\\Summoner",
                 "LolStatus": "Devtemple\\Laralol\\Facades\\LolStatus",
-                "Spectator": "Devtemple\\Laralol\\Facades\\Spectator"
+                "Spectator": "Devtemple\\Laralol\\Facades\\Spectator",
+                "ChampionMastery": "Devtemple\\Laralol\\Facades\\ChampionMastery"
             }
         }
     }
