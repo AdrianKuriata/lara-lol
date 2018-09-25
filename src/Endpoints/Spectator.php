@@ -1,8 +1,8 @@
 <?php
 
-namespace Devtemple\Laralol\Classes;
+namespace Devtemple\Laralol\Endpoints;
 
-use Devtemple\Laralol\Classes\Base;
+use Devtemple\Laralol\Endpoints\Base;
 
 use Devtemple\Laralol\Traits\Connector;
 
