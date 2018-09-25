@@ -14,11 +14,13 @@ class LaralolServiceProvider extends ServiceProvider
      * @var array $facades List of facades
      */
     protected $facades = [
-        'champion' => '\Devtemple\Laralol\Classes\Champion',
-        'summoner' => '\Devtemple\Laralol\Classes\Summoner',
-        'lol-status' => '\Devtemple\Laralol\Classes\LolStatus',
-        'spectator' => '\Devtemple\Laralol\Classes\Spectator',
-        'champion-mastery' => '\Devtemple\Laralol\Classes\ChampionMastery'
+        'champion' => '\Devtemple\Laralol\Endpoints\Champion',
+        'summoner' => '\Devtemple\Laralol\Endpoints\Summoner',
+        'lol-status' => '\Devtemple\Laralol\Endpoints\LolStatus',
+        'spectator' => '\Devtemple\Laralol\Endpoints\Spectator',
+        'champion-mastery' => '\Devtemple\Laralol\Endpoints\ChampionMastery',
+        'third-party-code' => '\Devtemple\Laralol\Endpoints\ThirdPartyCode',
+        'league' => '\Devtemple\Laralol\Endpoints\League'
     ];
 
     /**
