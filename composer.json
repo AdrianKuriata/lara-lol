@@ -29,7 +29,9 @@
                 "Summoner": "Devtemple\\Laralol\\Facades\\Summoner",
                 "LolStatus": "Devtemple\\Laralol\\Facades\\LolStatus",
                 "Spectator": "Devtemple\\Laralol\\Facades\\Spectator",
-                "ChampionMastery": "Devtemple\\Laralol\\Facades\\ChampionMastery"
+                "ChampionMastery": "Devtemple\\Laralol\\Facades\\ChampionMastery",
+                "ThirdPartyCode": "Devtemple\\Laralol\\Facades\\ThirdPartyCode",
+                "League": "Devtemple\\Laralol\\Facades\\League"
             }
         }
     }
