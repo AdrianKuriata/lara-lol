@@ -4,7 +4,7 @@ This is a Laravel package which let you faster getting data from League of Legen
 
 ## Getting Started
 
-Just install this package with packagist and let's start.
+Install this package with packagist.
 
 ### Installing
 
@@ -14,20 +14,32 @@ Type with you terminal:
 composer require devtemple/lara-lol
 ```
 
-Wait for everything will be installed.
-
 ### Set API key
 Open your *.env* file and set a ``` LARALOL_API_KEY ``` which you can generate on the League of Legends developers API page
 
 ### Options
-You can export config files and define which server should be default used for the endpoints API
-
+You can export config files:
 ```
 php artisan vendor:publish --tag=laralol-config
 ```
 
-Possible is define server with every new call endpoint:
+Default server:
+```
+default_server
+```
 
+Default season:
+```
+default_season
+```
+
+Possible is define server with every new call endpoint with function:
+
+```
+server($server)
+```
+
+ex.
 ```
 use Devtemple\Laralol\Facades\Champion;
 
@@ -35,113 +47,167 @@ Champion::server('euw1')->all();
 ```
 
 ### How use
+League of Legends API giving use some endpoint to get different data from the RIOT servers.
 
-#### Champion
-This is a champion endpoint. You can with it get a three possible elements which specific functions.
-
-This is possible with function
-```
-all()
-```
-which getting all data from champion endpoint and
-
+Every call to endpoint require function one function:
 ```
 get($fields)
 ```
-where you can define which fields you want get from endpoint (fields is defined on the full reference API LoL).
+
+If you want, you can set like a attribute with fields should you get from the call. You can define array with fields or one field. You can set it empty and get all data from the endpoint.
+
+ex.
+```
+get('field') or get(['field1', 'field2']) or get()
+```
+List of all fields for specific endpoints you can find on [League of Legends API Full Reference](https://developer.riotgames.com/api-methods/)
+
+#### Champion
+Champion endpoint let us get some data about champions. This endpoint don't have any specified for it functions.
 
 ex.
 ```
 use Devtemple\Laralol\Facades\Champion;
 
-Champion::all();
+Champion::get();
+```
+
+#### Champion Mastery
+Champion Mastery Endpoint let us get information about masteries champions for specified summoner. We have some functions which we can use for get some data.
+
+This function let us get a scores for specified summoner ID
+```
+scores($summonerId);
+```
+
+This function give us information about scores for every summoner champion by summoner ID
+```
+masteries($summonerId);
+```
+
+This function give us information about scores for specific champion ID and summoner ID
+```
+masteriesByChampion($summonerId, $championId);
+```
+
+#### LEAGUE
+League endpoint give you some data about challenger and masters leagues and leagues for specified summoners. You can do this with some specified functions.
+
+This combination functions let you get information about challenger or master league:
+```
+tier($tier); // available options: master or chall
+
+queue($queue); // available options: solo (RANKED_SOLO_5x5) or flex (RANKED_FLEX_SR) or flextt (RANKED_FLEX_TT)
+
+league(); // is required to get specified league - check on examples to see how to use it
+```
+
+This function let you get league by league ID
+```
+findById($leagueId);
+```
+
+This function let you get leagues for specified summoner ID
+```
+findBySummonerId($summonerId);
+```
+
+ex.
+```
+use Devtemple\Laralol\Facades\League;
+
+// You can get a challenger or master league for specified queue like this:
+League::tier('chall')->queue('solo')->league()->get();
+
+// Get league by league ID
+League::findByIn($leagueId)->get();
+
+// Find by summonerId all leagues for this summoner
+League::findBySummonerId($summonerId)->get();
+
+```
+
+#### Lol Status
+Lol Status endpoint give you information about specified server.
+
+ex.
+```
+use Devtemple\Laralol\Facades\LolStatus;
+
+LolStatus::get();
+```
+
+#### MATCH
+In progress ...
+
+#### Spectator
+Spectator endpoint give you some information about if summoner is in game or give you featured games.
+You can take information with two specified functions.
+
+This function return for you featured games:
+```
+featuredGames();
+```
+
+This function give you information if user is in game now:
+```
+findById($summonerId);
+```
+
+ex.
+```
+use Devtemple\Laralol\Facades\Spectator;
+
+Spectator::featuredGames()->get();
+
 or
-Champion::get('freeChampionIds') or Champion::get(['freeChampionIds', 'maxNewPlayerLevel'])
+
+Spectator::findById($summonerId)->get();
 ```
 
 #### Summoner
-This is Summoner endpoint where we can get summoner information with some additional functions.
+Summoner endpoint let us get data about summoner like a account ID, summoner ID, name or icon ID.
 
-We can get information about summoner with his name
-```
-findByName($name)
-```
+This endpoint has some functions which let us get awesome data from League of Legends API.
 
-or by his Account Id
+This functions let us get information about summoner:
 ```
-findByAccountId($id)
-```
+findByName($name); // by his name
 
-or by his ID
-```
-findById($id)
+findByAccountId($id); / /by his account id
+
+findById($id); // by his ID
 ```
 
 ex.
 ```
 use Devtemple\Laralol\Facades\Summoner;
 
-Summoner::findByName('Erring')->all(); or Summonner::findByName('Erring')->get('summonerLevel'); or Summoner::findByName(['summonerLevel', 'revisionDate']);
+Summoner::findByName('Erring')->get();
 
 or
 
-Summoner::findByAccountId(29647586);
+Summoner::findByAccountId(29647586)->get();
 
 or
 
-Summoner::findById(25251096);
+Summoner::findById(25251096)->get();
 ```
 
-#### CHAMPION MASTERY
-In progress ...
+#### Third Party Code
+Third Party Code endpoint return for you third party code defined in the League of Legends Client. You can do this with one specified function.
 
-#### LEAGUE
-In progress ...
-
-#### LOL STATUS
-This is LolStatus endpoint. With it you can get some information about server.
+This function give you third party code for specified summoner:
+```
+findById($summonerId);
+```
 
 ex.
 ```
-use Devtemple\Laralol\Facades\LolStatus;
+use Devtemple\Laralol\Facades\ThirdPartyCode;
 
-LolStatus::all();
-
-or
-
-LolStatus::get('hostname'); or LolStatus::get(['hostname', 'locales', 'slug']);
+ThirdPartyCode::findById($summonerId)->get();
 ```
-
-#### MATCH
-In progress ...
-
-#### SPECTATOR
-This is Spectator endpoint. With this you can receive featured games or information if user is IN-GAME and receive information about this game.
-
-You can do this with two functions:
-```
-featuredGames();
-```
-which let you receive popular games and
-
-```
-findById($id);
-```
-which let you get information if user is in game.
-
-ex.
-```
-use Devtemple\Laralol\Facades\Spectator;
-
-Spectator::featuredGames()->all(); or Spectator::featuredGames()->get('gameMode'); or Spectator::featuredGames(['gameMode', 'gameId']);
-
-or
-
-Spectator::findById($id)->all(); or Spectator::findById($id)->get('gameId'); or Spectator::findById($id)->get(['gameId', 'gameMode']);
-```
-
-#### THIRD PARTY CODE
-In progress ...
 
 #### TOURNAMENT STUB
 In progress ...

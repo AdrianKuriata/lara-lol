@@ -4,6 +4,8 @@ namespace Devtemple\Laralol\Endpoints;
 
 use Devtemple\Laralol\Traits\Connector;
 
+use Devtemple\Laralol\Endpoints\Base;
+
 /**
  * Champion enpoint
  */

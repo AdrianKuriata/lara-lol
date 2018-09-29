@@ -12,7 +12,7 @@ use Devtemple\Laralol\Traits\Connector;
 class Match extends Base {
     use Connector;
 
-    protected $season, $queue, $beginIndex, $endIndex, $beginTime, $endTime, $champion;
+    protected $champion, $season, $queue, $beginIndex, $endIndex, $beginTime, $endTime;
 
     /**
      * Construct function which we defining name and type endpoint
@@ -26,6 +26,24 @@ class Match extends Base {
     public function findByAccountId($id)
     {
         $this->name = 'matchlists/by-account/' . $id;
+        return $this;
+    }
+
+    public function season(int $season)
+    {
+        $this->season = $season;
+        return $this;
+    }
+
+    public function queue(int $queue)
+    {
+        $this->queue = $queue;
+        return $this;
+    }
+
+    public function champion(int $championId)
+    {
+        $this->champion = $championId;
         return $this;
     }
 

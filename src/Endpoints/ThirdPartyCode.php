@@ -21,9 +21,13 @@ class ThirdPartyCode extends Base {
         $this->name = 'third-party-code';
     }
 
-    public function findById($id)
+    /**
+     * Find summoner by his summonerId
+     * @param  int $summonerId Summoner ID
+     */
+    public function findById($summonerId)
     {
-        $this->name = $this->name . '/by-summoner/' . $id;
+        $this->name = $this->name . '/by-summoner/' . $summonerId;
         return $this;
     }
 }

@@ -31,11 +31,11 @@ class Spectator extends Base {
 
     /**
      * This function finding by summoner ID his current IN-GAME information
-     * @param int $id Summoner ID
+     * @param int $summonerId Summoner ID
      */
-    public function findById($id)
+    public function findById($summonerId)
     {
-        $this->name = 'active-games/by-summoner/' . $id;
+        $this->name = 'active-games/by-summoner/' . $summonerId;
         return $this;
     }
 }

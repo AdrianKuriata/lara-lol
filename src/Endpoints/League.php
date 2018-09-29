@@ -4,6 +4,8 @@ namespace Devtemple\Laralol\Endpoints;
 
 use Devtemple\Laralol\Traits\Connector;
 
+use Devtemple\Laralol\Endpoints\Base;
+
 /**
  * League enpoint
  */
@@ -65,22 +67,22 @@ class League extends Base {
     }
 
     /**
-     * Find league by idea
-     * @param string $id League ID
+     * Find league by league ID
+     * @param string $leagueId League ID
      */
-    public function findById($id)
+    public function findById($leagueId)
     {
-        $this->name = 'leagues/' . $id;
+        $this->name = 'leagues/' . $leagueId;
         return $this;
     }
 
     /**
      * Find league by summoner idea
-     * @param int $id Summoner ID
+     * @param int $summonerId Summoner ID
      */
-    public function findBySummonerId($id)
+    public function findBySummonerId($summonerId)
     {
-        $this->name = 'positions/by-summoner/' . $id;
+        $this->name = 'positions/by-summoner/' . $summonerId;
         return $this;
     }
 }
