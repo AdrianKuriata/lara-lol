@@ -31,7 +31,8 @@
                 "Spectator": "Devtemple\\Laralol\\Facades\\Spectator",
                 "ChampionMastery": "Devtemple\\Laralol\\Facades\\ChampionMastery",
                 "ThirdPartyCode": "Devtemple\\Laralol\\Facades\\ThirdPartyCode",
-                "League": "Devtemple\\Laralol\\Facades\\League"
+                "League": "Devtemple\\Laralol\\Facades\\League",
+                "Match": "Devtemple\\Laralol\\Facades\\Match"
             }
         }
     }
