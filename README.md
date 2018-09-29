@@ -1,6 +1,6 @@
 # Laralol
 
-This is a Laravel package which let you faster getting data from League of Legends API. It is my first package, if you want, you can open new issues and give me a clues what I can do better.
+This is a Laravel package which let you faster getting data from League of Legends API. It is my first package, if you want, you can open new issues and give me a clues what I can do better. This API now is available only with facades, but I planning let developers use global functions for call endpoints. Now you can install this package with only master branch, if i will end this package, make a tag and will be v1, now is beta.
 
 ## Getting Started
 
@@ -43,18 +43,18 @@ ex.
 ```
 use Devtemple\Laralol\Facades\Champion;
 
-Champion::server('euw1')->all();
+Champion::server('euw1')->get();
 ```
 
 ### How use
 League of Legends API giving use some endpoint to get different data from the RIOT servers.
 
-Every call to endpoint require function one function:
+Every call to endpoint require one function:
 ```
 get($fields)
 ```
 
-If you want, you can set like a attribute with fields should you get from the call. You can define array with fields or one field. You can set it empty and get all data from the endpoint.
+If you want, you can set attribute with fields you want get from the call. You can define array with fields or one field. You can set it empty and get all data from the endpoint.
 
 ex.
 ```
@@ -90,6 +90,21 @@ This function give us information about scores for specific champion ID and summ
 masteriesByChampion($summonerId, $championId);
 ```
 
+ex.
+```
+use Devtemple\Laralol\Facades\ChampionMastery;
+
+ChampionMastery::scores($summonerId)->get();
+
+or
+
+ChampionMastery::masteries($summonerId)->get();
+
+or
+
+ChampionMastery::masteriesByChampion($summonerId, $championId);
+```
+
 #### LEAGUE
 League endpoint give you some data about challenger and masters leagues and leagues for specified summoners. You can do this with some specified functions.
 
@@ -120,15 +135,15 @@ use Devtemple\Laralol\Facades\League;
 League::tier('chall')->queue('solo')->league()->get();
 
 // Get league by league ID
-League::findByIn($leagueId)->get();
+League::findById($leagueId)->get();
 
-// Find by summonerId all leagues for this summoner
+// Find all leagues for specified summoner
 League::findBySummonerId($summonerId)->get();
 
 ```
 
 #### Lol Status
-Lol Status endpoint give you information about specified server.
+Lol Status endpoint give you information about specified server. This endpoint don't have any specified functions.
 
 ex.
 ```
@@ -138,10 +153,10 @@ LolStatus::get();
 ```
 
 #### MATCH
-In progress ...
+Exists but not ended yet, just tommorow should be fully available.
 
 #### Spectator
-Spectator endpoint give you some information about if summoner is in game or give you featured games.
+Spectator endpoint give you some information about summoner if he is in game or give you featured games.
 You can take information with two specified functions.
 
 This function return for you featured games:
@@ -166,15 +181,13 @@ Spectator::findById($summonerId)->get();
 ```
 
 #### Summoner
-Summoner endpoint let us get data about summoner like a account ID, summoner ID, name or icon ID.
-
-This endpoint has some functions which let us get awesome data from League of Legends API.
+Summoner endpoint let us get data about summoner like a account ID, summoner ID, name or icon ID. This endpoint has some functions which let us get awesome data from League of Legends API.
 
 This functions let us get information about summoner:
 ```
 findByName($name); // by his name
 
-findByAccountId($id); / /by his account id
+findByAccountId($id); // by his account id
 
 findById($id); // by his ID
 ```
