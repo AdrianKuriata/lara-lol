@@ -1,6 +1,6 @@
 # Laralol
 
-This is a Laravel package which let you faster getting data from League of Legends API. It is my first package, if you want, you can open new issues and give me a clues what I can do better. This API now is available only with facades, but I planning let developers use global functions for call endpoints. Now you can install this package with only master branch, if i will end this package, make a tag and will be v1, now is beta.
+This is a Laravel package which let you faster getting data from League of Legends API. It is my first package, if you want, you can open new issues and give me a clues what I can do better. This API now is available only with facades, but I planning let developers use global functions for call endpoints. Now you can install this package with only master branch, if I will end this package, make a tag and will be v1, now is beta.
 
 ## Getting Started
 
@@ -105,7 +105,7 @@ or
 ChampionMastery::masteriesByChampion($summonerId, $championId);
 ```
 
-#### LEAGUE
+#### League
 League endpoint give you some data about challenger and masters leagues and leagues for specified summoners. You can do this with some specified functions.
 
 This combination functions let you get information about challenger or master league:
@@ -152,8 +152,72 @@ use Devtemple\Laralol\Facades\LolStatus;
 LolStatus::get();
 ```
 
-#### MATCH
-Exists but not ended yet, just tommorow should be fully available.
+#### Match
+Match endpoint give you some data about matches and timelines for specific match. This endpoint have a some specified functions.
+
+Options which you can use is:
+- champion
+- season
+- queue
+- beginIndex
+- endIndex
+- beginTime
+- endTime
+
+// Notice: Working with tournament code require specific policy for your API.
+
+```
+findByAccountId($accountId); // Receive matches for Account ID
+
+findByMatchId($matchId); // Receive match for Match ID
+
+findByTournamentCode($tournamentCode); // Receive matches by Tournament code
+
+findByMatchIdAndTournamentCode($matchId, $tournamentCode); // Receive match by Match ID and Tournament code
+
+timeline($matchId); // Receive timeline for specific Match ID
+
+// With under function you can filter result you would get. How you can use it you can check in examples
+season($season); // Data for specific users
+champion($championId); // Data for specific champion ID
+queue($queue); // Data for specific queue
+beginIndex($beginIndex); // Start data from specific index
+endIndex($endIndex); // End data for specific index
+beginTime($beginTime); // Start data for specific date (You can define normal format, timestamp or carbon instance)
+endTime($endTime); // End data for specific date (You can define normal format, timestamp or carbon instance)
+
+or
+
+options($options); // Array with specific options champion|season|queue|beginIndex|endIndex|beginTime|endTime
+```
+
+ex.
+
+```
+use Devtemple\Laralol\Facades\Match;
+
+// Get matches for specific account ID
+Match::findByAccountId($accountId)->get();
+
+//  Get matches with specific functions options
+Match::findByAccountId($accountId)
+->season(10)
+->beginIndex(10)
+->endIndex(110)
+->beginTime('12.01.2018' || $timestamp || Carbon::now()->subWeeks(12)) // Date between beginTime and endTime can't be more than one week
+->endTime('15.01.2018' || $timestamp || Carbon::now()->subWeeks(12))
+->get();
+
+or
+
+Match::findByAccountId($accountId)
+->options([
+    'season' => 10,
+    'beginIndex' => 10,
+    'endIndex' => 110
+])
+->get();
+```
 
 #### Spectator
 Spectator endpoint give you some information about summoner if he is in game or give you featured games.
