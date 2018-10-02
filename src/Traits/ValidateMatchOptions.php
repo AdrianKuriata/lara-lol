@@ -42,7 +42,7 @@ trait ValidateMatchOptions {
      * Set options if options property is null
      * @return array Array with prepared options
      */
-    private function setMatchOptions() : array
+    private function setMatchOptions()
     {
         foreach ($this->optionKeys as $key) {
             if (!is_null($this->{$key})) {
@@ -60,14 +60,16 @@ trait ValidateMatchOptions {
     private function validateMatchOptions() : bool
     {
         // Checking if all fields exists in optionKeys
-        foreach ($this->options as $key => $row) {
-            if (!in_array($key, $this->optionKeys)) {
-                throw new ValidateOptionsException("Key $key doesn't exists.");
-            }
+        if (isset($this->options)) {
+            foreach ($this->options as $key => $row) {
+                if (!in_array($key, $this->optionKeys)) {
+                    throw new ValidateOptionsException("Key $key doesn't exists.");
+                }
 
-            if (in_array($key, ['champion', 'season', 'queue', 'beginIndex', 'endIndex'])) {
-                if ($row < 0) {
-                    throw new ValidateOptionsException(ucfirst($key) . " value can't be lower than 0.");
+                if (in_array($key, ['champion', 'season', 'queue', 'beginIndex', 'endIndex'])) {
+                    if ($row < 0) {
+                        throw new ValidateOptionsException(ucfirst($key) . " value can't be lower than 0.");
+                    }
                 }
             }
         }
@@ -173,11 +175,13 @@ trait ValidateMatchOptions {
     {
         $query = [];
 
-        foreach ($this->options as $key => $row) {
-            if (in_array($key, ['beginTime', 'endTime'])) {
-                $query[$key] = $this->getMicroTime($row);
-            } else {
-                $query[$key] = $row;
+        if (isset($this->options)) {
+            foreach ($this->options as $key => $row) {
+                if (in_array($key, ['beginTime', 'endTime'])) {
+                    $query[$key] = $this->getMicroTime($row);
+                } else {
+                    $query[$key] = $row;
+                }
             }
         }
 
