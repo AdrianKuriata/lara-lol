@@ -29,6 +29,7 @@ class Match extends Base {
     public function __construct()
     {
         $this->type = 'match';
+        $this->request_type = 'GET';
         $this->season = config('laralol.default_season');
     }
 

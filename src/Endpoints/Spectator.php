@@ -18,6 +18,7 @@ class Spectator extends Base {
     public function __construct()
     {
         $this->type = 'spectator';
+        $this->request_type = 'GET';
     }
 
     /**

@@ -19,5 +19,6 @@ class Champion extends Base {
     {
         $this->type = 'platform';
         $this->name = 'champion-rotations';
+        $this->request_type = 'GET';
     }
 }

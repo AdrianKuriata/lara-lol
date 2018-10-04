@@ -32,7 +32,9 @@
                 "ChampionMastery": "Devtemple\\Laralol\\Facades\\ChampionMastery",
                 "ThirdPartyCode": "Devtemple\\Laralol\\Facades\\ThirdPartyCode",
                 "League": "Devtemple\\Laralol\\Facades\\League",
-                "Match": "Devtemple\\Laralol\\Facades\\Match"
+                "Match": "Devtemple\\Laralol\\Facades\\Match",
+                "TournamentStub": "Devtemple\\Laralol\\Facades\\TournamentStub",
+                "Tournament": "Devtemple\\Laralol\\Facades\\Tournament"
             }
         }
     }

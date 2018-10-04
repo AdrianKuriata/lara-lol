@@ -19,6 +19,7 @@ class Summoner extends Base {
     {
         $this->name = 'summoners';
         $this->type = 'summoner';
+        $this->request_type = 'GET';
     }
 
     /**

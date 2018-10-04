@@ -45,7 +45,7 @@ trait ValidateMatchOptions {
     private function setMatchOptions()
     {
         foreach ($this->optionKeys as $key) {
-            if (!is_null($this->{$key})) {
+            if (property_exists(get_called_class(), $key) && !is_null($this->{$key})) {
                 $this->options[$key] = $this->{$key};
             }
         }

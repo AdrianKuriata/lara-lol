@@ -21,7 +21,8 @@ class LaralolServiceProvider extends ServiceProvider
         'champion-mastery' => '\Devtemple\Laralol\Endpoints\ChampionMastery',
         'third-party-code' => '\Devtemple\Laralol\Endpoints\ThirdPartyCode',
         'league' => '\Devtemple\Laralol\Endpoints\League',
-        'match' => '\Devtemple\Laralol\Endpoints\Match'
+        'match' => '\Devtemple\Laralol\Endpoints\Match',
+        'tournament-stub' => '\Devtemple\Laralol\Endpoints\TournamentStub'
     ];
 
     /**

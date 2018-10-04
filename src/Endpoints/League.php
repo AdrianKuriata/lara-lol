@@ -26,6 +26,7 @@ class League extends Base {
     public function __construct()
     {
         $this->type = 'league';
+        $this->request_type = 'GET';
         $this->queues = [
             'solo' => 'RANKED_SOLO_5x5',
             'flex' => 'RANKED_FLEX_SR',

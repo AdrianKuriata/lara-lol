@@ -16,7 +16,7 @@ trait Connector {
      * Required variables
      * @var string
      */
-    protected $server, $type, $name;
+    protected $server, $type, $name, $request_type, $post_options;
 
     /**
      * Connect function
@@ -41,7 +41,13 @@ trait Connector {
      */
     public function response()
     {
-        $response = $this->connect()->get($this->name);
+        if (($this->request_type == 'POST' || $this->request_type == 'PUT') && $this->post_options != null) {
+            $response = $this->connect()->request($this->request_type, $this->name, [
+                'body' => json_encode($this->post_options)
+            ]);
+        } else {
+            $response = $this->connect()->request($this->request_type, $this->name);
+        }
 
         return json_decode($response->getBody());
     }

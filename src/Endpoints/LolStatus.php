@@ -19,5 +19,6 @@ class LolStatus extends Base {
     {
         $this->name = 'shard-data';
         $this->type = 'status';
+        $this->request_type = 'GET';
     }
 }

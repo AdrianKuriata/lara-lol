@@ -19,6 +19,7 @@ class ThirdPartyCode extends Base {
     {
         $this->type = 'platform';
         $this->name = 'third-party-code';
+        $this->request_type = 'GET';
     }
 
     /**

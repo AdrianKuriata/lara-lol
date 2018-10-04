@@ -18,6 +18,7 @@ class ChampionMastery extends Base {
     public function __construct()
     {
         $this->type = 'champion-mastery';
+        $this->request_type = 'GET';
     }
 
     /**
