@@ -179,11 +179,17 @@ timeline($matchId); // Receive timeline for specific Match ID
 
 // With under function you can filter result you would get. How you can use it you can check in examples
 season($season); // Data for specific users
+
 champion($championId); // Data for specific champion ID
+
 queue($queue); // Data for specific queue
+
 beginIndex($beginIndex); // Start data from specific index
+
 endIndex($endIndex); // End data for specific index
+
 beginTime($beginTime); // Start data for specific date (You can define normal format, timestamp or carbon instance)
+
 endTime($endTime); // End data for specific date (You can define normal format, timestamp or carbon instance)
 
 or
