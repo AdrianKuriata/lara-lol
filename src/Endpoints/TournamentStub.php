@@ -22,6 +22,10 @@ class TournamentStub extends Base {
         $this->server = 'americas';
     }
 
+    /**
+     * Creates a tournament provider and returns its ID
+     * @param array $options Array with functions, check a full api reference on lol page
+     */
     public function providers($options)
     {
         $this->request_type = 'POST';
@@ -30,6 +34,10 @@ class TournamentStub extends Base {
         return $this;
     }
 
+    /**
+     * Creates a tournament and returns its ID
+     * @param array $options Array with functions, check a full api reference on lol page
+     */
     public function tournaments($options)
     {
         $this->request_type = 'POST';
@@ -38,9 +46,14 @@ class TournamentStub extends Base {
         return $this;
     }
 
-    public function getCodes($tournamentId, $options, $count)
+    /**
+     * Create a tournament code for the given tournament
+     * @param string $tournamentId The tournament ID
+     * @param array $options Array with functions, check a full api reference on lol page
+     * @param int $count The number of codes to create
+     */
+    public function postCodes($tournamentId, $options, $count)
     {
-        //2782 - tc
         $this->options = [
             'tournamentId' => $tournamentId,
             'count' => $count
@@ -49,6 +62,16 @@ class TournamentStub extends Base {
         $this->request_type = 'POST';
         $this->name = 'codes';
         $this->post_options = $options;
+        return $this;
+    }
+
+    /**
+     * Gets a list of lobby events by tournament code
+     * @param string $tournamentCode The short code to look up lobby events for
+     */
+    public function getLobbyEvents($tournamentCode)
+    {
+        $this->name = 'lobby-events/by-code/' . $tournamentCode;
         return $this;
     }
 }

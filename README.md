@@ -293,10 +293,38 @@ ThirdPartyCode::findById($summonerId)->get();
 ```
 
 #### TOURNAMENT STUB
-In progress ...
+This endpoint let you work with Tournament codes and tournament matches. This is a stub for testing and only working on **development** ```LOL_API_KEY```. If you want know to options, go on lol api reference and check what you can use.
+
+This function give you tournament stub data:
+
+```
+providers($options); // Creates a tournament provider and returns its ID
+```
+
+```
+tournaments($options); // Creates a tournament and returns its ID.
+```
+
+```
+postCodes($tournamentId, $options, $count); // Create a tournament code for the given tournament
+```
+
+```
+getLobbyEvents($tournamentCode); // Gets a list of lobby events by tournament code
+```
 
 #### TOURNAMENT
-In progress ...
+This endpoint let you use all functions from tournament stub endpoint and extra few functions. You need to remember if you want use this endpoint, you need a ```production``` ```LOL_API_KEY```.
+
+Check some additional functions:
+
+```
+putCodes($tournamentCode); // Update the pick type, map, spectator type, or allowed summoners for a code
+```
+
+```
+getCodes($tournamentCode); // Returns the tournament code DTO associated with a tournament code string
+```
 
 ## Built With
 
