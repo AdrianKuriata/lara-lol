@@ -1,6 +1,6 @@
 # Laralol
 
-This is a Laravel package which let you faster getting data from League of Legends API. It is my first package, if you want, you can open new issues and give me a clues what I can do better. This API now is available only with facades, but I planning let developers use global functions for call endpoints. Now you can install this package with only master branch, if I will end this package, make a tag and will be v1, now is beta.
+This is a Laravel package which let you faster getting data from League of Legends API.
 
 ## Getting Started
 
