@@ -16,7 +16,7 @@ trait Connector {
      * Required variables
      * @var string
      */
-    protected $server, $type, $name, $request_type, $post_options;
+    protected $server, $type, $name, $request_type, $post_options, $version;
 
     /**
      * Connect function
@@ -25,9 +25,10 @@ trait Connector {
     public function connect()
     {
         $this->server = $this->server != null? $this->server : config('laralol.default_server');
+        $this->version = config('laralol.api-version');
 
         $options['query'] = $this->getQueries();
-        $options['base_uri'] = 'https://' . $this->server . '.api.riotgames.com/lol/' . $this->type . '/v3/';
+        $options['base_uri'] = 'https://' . $this->server . '.api.riotgames.com/lol/' . $this->type . '/v'.((!is_array($this->version[$this->type]))?$this->version[$this->type]:$this->version[$this->type][$this->name]).'/';
         $options['headers'] = [
             'X-Riot-Token' => config('laralol.api_key')
         ];
